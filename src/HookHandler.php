@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\ExtendedSignup;
 
 use MediaWiki\Auth\AuthenticationResponse;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Auth\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\User\Hook\LocalUserCreatedHook;
 use MediaWiki\User\UserIdentity;
@@ -14,7 +13,6 @@ use MediaWiki\User\UserOptionsManager;
  * Hook handler for ExtendedSignup extension.
  */
 class HookHandler implements
-	AuthChangeFormFieldsHook,
 	GetPreferencesHook,
 	LocalUserCreatedHook
 {

@@ -45,7 +45,7 @@ class HookHandler implements
 				$this->userOptionsManager->setOption(
 					$user,
 					'extendedsignup-phone',
-					$request->extendedsignup_phone
+					$this->sanitizePhone( $request->extendedsignup_phone )
 				);
 				$this->userOptionsManager->saveOptions( $user );
 				break;
@@ -71,6 +71,9 @@ class HookHandler implements
 			'help-message' => 'extendedsignup-field-phone-help',
 			'section' => 'personal/info',
 			'priority' => 100,
+			'maxlength' => 20,
+			'filter-callback' => [ $this, 'sanitizePhone' ],
+			'validation-callback' => [ $this, 'validatePhone' ],
 		];
 	}
 
@@ -82,6 +85,40 @@ class HookHandler implements
 			'type' => 'text',
 			'label-message' => 'extendedsignup-field-phone',
 			'section' => 'personal/email',
+			'maxlength' => 20,
+			'filter-callback' => [ $this, 'sanitizePhone' ],
+			'validation-callback' => [ $this, 'validatePhone' ],
 		];
+	}
+
+	/**
+	 * Sanitizes a phone number.
+	 *
+	 * @param string $value
+	 * @return string
+	 */
+	public function sanitizePhone( $value ) {
+		$value = trim( (string)$value );
+		return substr( preg_replace( '/[^\d+\-\(\) ]/', '', $value ), 0, 20 );
+	}
+
+	/**
+	 * Validates a phone number.
+	 *
+	 * @param string $value
+	 * @param array $alldata
+	 * @param HTMLForm $form
+	 * @return bool|string|Message
+	 */
+	public function validatePhone( $value, $alldata, $form ) {
+		if ( $value === '' ) {
+			return true;
+		}
+
+		if ( preg_match( '/[^\d+\-\(\) ]/', $value ) ) {
+			return $form->msg( 'extendedsignup-error-phone-invalid' );
+		}
+
+		return true;
 	}
 }

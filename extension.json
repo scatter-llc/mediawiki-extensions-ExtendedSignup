@@ -29,7 +29,7 @@
 	"Hooks": {
 		"AuthChangeFormFields": "ExtendedSignupHookHandler",
 		"GetPreferences": "ExtendedSignupHookHandler",
-		"AfterLocalUserCreated": "ExtendedSignupHookHandler"
+		"LocalUserCreated": "ExtendedSignupHookHandler"
 	},
 	"manifest_version": 2
 }

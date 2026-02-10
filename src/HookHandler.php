@@ -2,18 +2,12 @@
 
 namespace MediaWiki\Extension\ExtendedSignup;
 
-use MediaWiki\Auth\Hook\AuthChangeFormFieldsHook;
 use MediaWiki\Auth\AuthManager;
-use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use MediaWiki\User\Hook\AfterLocalUserCreatedHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsManager;
 use MediaWiki\HTMLForm\HTMLForm;
 
-class HookHandler implements
-    GetPreferencesHook,
-    AfterLocalUserCreatedHook,
-    AuthChangeFormFieldsHook
+class HookHandler
 {
     /** @var UserOptionsManager */
     private $userOptionsManager;
@@ -32,7 +26,7 @@ class HookHandler implements
     /**
      * @inheritDoc
      */
-    public function onAfterLocalUserCreated( UserIdentity $user, $autocreated ): void {
+    public function onLocalUserCreated( UserIdentity $user, $autocreated ): void {
         $requests = $this->authManager->getAuthenticationRequests( AuthManager::ACTION_CREATE );
         foreach ( $requests as $request ) {
             if ( property_exists( $request, 'extendedsignup_phone' ) && $request->extendedsignup_phone !== null ) {

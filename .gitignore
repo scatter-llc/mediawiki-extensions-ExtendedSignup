@@ -1,0 +1,13 @@
+# Composer
+/vendor/
+/composer.phar
+
+# IDE
+/.idea/
+
+# OS
+.DS_Store
+
+# MediaWiki specific (if any local configs or logs are added)
+/*-local.php
+/error.log

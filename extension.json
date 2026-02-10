@@ -1,0 +1,35 @@
+{
+	"name": "ExtendedSignup",
+	"version": "0.1.0",
+	"author": "James Hare",
+	"url": "https://github.com/scatter-llc/mediawiki-extensions-ExtendedSignup",
+	"descriptionmsg": "extendedsignup-desc",
+	"license-name": "BSD-3-Clause",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"MessagesDirs": {
+		"ExtendedSignup": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ExtendedSignup\\": "src/"
+	},
+	"HookHandlers": {
+		"ExtendedSignupHookHandler": {
+			"class": "MediaWiki\\Extension\\ExtendedSignup\\HookHandler",
+			"services": [
+				"UserOptionsManager",
+				"AuthManager"
+			]
+		}
+	},
+	"Hooks": {
+		"AuthChangeFormFields": "ExtendedSignupHookHandler",
+		"GetPreferences": "ExtendedSignupHookHandler",
+		"LocalUserCreated": "ExtendedSignupHookHandler"
+	},
+	"manifest_version": 2
+}

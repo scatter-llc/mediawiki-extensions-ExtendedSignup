@@ -1,0 +1,14 @@
+{
+	"name": "mediawiki/extended-signup",
+	"type": "mediawiki-extension",
+	"description": "Extends the account registration form and adds those fields to user preferences",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"composer/installers": "~1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"MediaWiki\\Extension\\ExtendedSignup\\": "src/"
+		}
+	}
+}

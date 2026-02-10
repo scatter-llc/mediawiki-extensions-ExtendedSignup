@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Junie"
+		]
+	},
+	"extendedsignup-desc": "Enables additional form fields on account registration",
+	"extendedsignup-field-phone": "Phone number",
+	"extendedsignup-field-phone-help": "Please enter your phone number.",
+	"extendedsignup-error-phone-invalid": "The phone number you entered is invalid. Only digits, spaces, and the following characters are allowed: + - ( )",
+	"extendedsignup-pref-section": "Extended registration information"
+}
